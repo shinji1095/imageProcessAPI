@@ -2,8 +2,11 @@ from fastapi import FastAPI, File, UploadFile
 from starlette.templating import Jinja2Templates  # new
 from starlette.requests import Request
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 import io
 from typing import List
+import numpy as np
+import cv2
 
 
 app = FastAPI(
@@ -24,8 +27,10 @@ def index(request: Request):
     return templates.TemplateResponse('index.html',
                                       {'request': request}  # new 変更！
     )
+    
 
-def process(files: List[UploadFile] = File(...)):
+@app.post("/process")
+async def process(files: List[UploadFile] = File(...)):
     bin_data = io.BytesIO(files[0].file.read())
     img = read_image(bin_data)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

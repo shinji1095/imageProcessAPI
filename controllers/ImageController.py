@@ -21,8 +21,6 @@ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("gray.png", img_gray)
 hist = cv2.calcHist([img_gray],[0],None,[256],[0,256])
 data = list(map(lambda v: v[0], hist))
-def test():
-    return "test"
 
 def get_threshold(hist, rate):
     total = sum(hist)
