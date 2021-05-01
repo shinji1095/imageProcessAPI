@@ -9,10 +9,10 @@
         <a href="/admin" class="btn btn-primary">Login</a>
     </div>
 
-    <form action="/process", method="POST">
+    <form action="/process", method="POST" id="form">
         <label for="image">画像を選択してください</label>
-        <input type="file">
-        <input type="submit" value="">submit
+        <input type="file" name="binaryData">
+        <input type="button" onclick="submitFunction();">submit
     </form>
 </div>
  
