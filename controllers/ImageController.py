@@ -5,8 +5,8 @@ class ImageController():
     def __init__(self):
         image = None
 
-    def getImage(self):
-        pass
+    def getImage(self):, 
+        self.image = 
 
     def _getThreshold(self):
         pass
