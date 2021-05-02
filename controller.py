@@ -44,7 +44,6 @@ async def process(files: List[UploadFile] = File(...)):
         threshold     = get_threshold(data, 0.3)
         _, img_thresh = cv2.threshold(img_gray, threshold, 255, cv2.THRESH_BINARY)
         _, img_en     = cv2.imencode("binary.png", img_thresh)
-        print(img_en.tostring())
         return FileResponse("gray.png")
         
     except Exception as e:

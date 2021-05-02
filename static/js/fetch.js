@@ -6,11 +6,15 @@
         method: "POST",
         body: data,
     }
-
+    
     const res = await fetch(url, config)
     console.log(res)
     //.then(data => data.json())
-    const blob = res.blob();
-    console.log(blob)
-    
+    const blob = await res.blob();
+    const reader = new FileReader();
+    const imageField = document.getElementById("imageField");
+    reader.onload = (e) => {
+        imageField.src = e.target.result;
+    }
+    reader.readAsDataURL(blob);
 }
