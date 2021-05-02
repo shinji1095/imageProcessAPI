@@ -1,4 +1,4 @@
- submitFunction = function(){
+ submitFunction = async function(){
     const url = "/process";
     const form = document.getElementById("form");
     const data = new FormData(form);
@@ -7,12 +7,10 @@
         body: data,
     }
 
-    fetch(url, config)
-    .then(data => data.json())
-    .then(binary => {
-        console.log(binary)
-    })
-    .catch(e => {
-        console.log(e)
-    })
+    const res = await fetch(url, config)
+    console.log(res)
+    //.then(data => data.json())
+    const blob = res.blob();
+    console.log(blob)
+    
 }
